@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, textarea, button {
+    body, input, textarea, button, h1 {
         font: 400 ${({ theme }) =>
           theme.textSizes['text-text-m']} 'Nunito', sans-serif;
         line-height: 160%;
@@ -38,6 +38,7 @@ export const GlobalStyles = createGlobalStyle`
 
     a {
         color: inherit;
+        text-decoration: none;
     }
 
     button {
