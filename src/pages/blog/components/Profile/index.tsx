@@ -27,7 +27,7 @@ export function Profile() {
           </li>
           <li>
             <FontAwesomeIcon icon={faBuilding} />
-            rocketseat
+            searching
           </li>
           <li>
             <FontAwesomeIcon icon={faUserGroup} />
