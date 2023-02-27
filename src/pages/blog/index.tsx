@@ -24,6 +24,8 @@ export function Blog() {
   const [posts, setPosts] = useState<iPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
+  const postsLength = posts.length
+
   const getPosts = useCallback(
     async (query: string = '') => {
       try {
@@ -47,7 +49,7 @@ export function Blog() {
   return (
     <>
       <Profile />
-      <SearchInput />
+      <SearchInput postsLength={postsLength} getPosts={getPosts} />
       <PostListContainer>
         {posts.map((post) => (
           <Post key={post.number} post={post} />
