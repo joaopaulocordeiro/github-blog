@@ -8,8 +8,15 @@ import {
   faComment,
 } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
+import { iPost } from '../../../Blog'
+import { Spinner } from '../../../../components/Spinner'
 
-export function PostHeader() {
+interface PostHeaderProps {
+  postData: iPost
+  isLoading: boolean
+}
+
+export function PostHeader({ postData, isLoading }: PostHeaderProps) {
   const navigate = useNavigate()
 
   function goBack() {
@@ -18,32 +25,43 @@ export function PostHeader() {
 
   return (
     <PostHeaderContainer>
-      <header>
-        <ExternalLink
-          as="button"
-          onClick={goBack}
-          icon={<FontAwesomeIcon icon={faChevronLeft} />}
-          text="Voltar"
-          variant="iconLeft"
-        />
-        <ExternalLink text="Ver no Github" href="#" target="_blank" />
-      </header>
-      <h1>JavaScript data types and data structures</h1>
-      <ul>
-        <ul>
-          <li>
-            <FontAwesomeIcon icon={faGithub} />
-            joaopaulocordeiro
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faCalendar} />
-            há 1 dia
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faComment} />5 comentários
-          </li>
-        </ul>
-      </ul>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <header>
+            <ExternalLink
+              as="button"
+              onClick={goBack}
+              icon={<FontAwesomeIcon icon={faChevronLeft} />}
+              text="Voltar"
+              variant="iconLeft"
+            />
+            <ExternalLink
+              text="Ver no Github"
+              href={postData.html_url}
+              target="_blank"
+            />
+          </header>
+          <h1>{postData.title}</h1>
+          <ul>
+            <ul>
+              <li>
+                <FontAwesomeIcon icon={faGithub} />
+                {postData.user.login}
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faCalendar} />
+                há 1 dia
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faComment} />
+                {postData.comments} comentários
+              </li>
+            </ul>
+          </ul>
+        </>
+      )}
     </PostHeaderContainer>
   )
 }
