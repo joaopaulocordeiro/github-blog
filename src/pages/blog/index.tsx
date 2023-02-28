@@ -34,7 +34,6 @@ export function Blog() {
         const response = await api.get(
           `/search/issues?q=${query}%20repo:${username}/${reponame}`,
         )
-
         setPosts(response.data.items)
       } finally {
         setIsLoading(false)
