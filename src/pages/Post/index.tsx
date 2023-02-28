@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api } from '../../lib/axios'
 import { iPost } from '../Blog'
+import { PostContent } from './components/PostContent'
 import { PostHeader } from './components/PostHeader'
 
 const username = import.meta.env.VITE_GITHUB_USERNAME
@@ -33,6 +34,7 @@ export function Post() {
   return (
     <>
       <PostHeader isLoading={isLoading} postData={postData} />
+      {!isLoading && <PostContent content={postData.body} />}
     </>
   )
 }
