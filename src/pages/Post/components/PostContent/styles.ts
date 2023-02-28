@@ -7,10 +7,19 @@ export const PostContentContainer = styled.section`
   padding: 2.5rem 2rem;
   margin-bottom: 8rem;
 
+  img {
+    width: 100%;
+  }
+
   h1,
   h2,
   h3 {
     color: ${({ theme }) => theme.colors['brand-blue']};
+  }
+
+  ul {
+    list-style: inherit;
+    padding-left: 1.5rem;
   }
 
   pre {
